@@ -5,6 +5,7 @@ class User {
   late String Name;
   late String surName;
   late int state;
+  late int rol;
 
   User(
       {required this.id,
@@ -12,7 +13,8 @@ class User {
       required this.password,
       required this.Name,
       required this.surName,
-      required this.state});
+      required this.state,
+      required this.rol});
 
   factory User.desdeJson(Map<String, dynamic> jsonMap) {
     return User(
@@ -21,6 +23,7 @@ class User {
         surName: jsonMap['surname'],
         email: jsonMap['email'],
         password: jsonMap['password'],
-        state: int.parse(jsonMap['state']));
+        state: int.parse(jsonMap['state']),
+        rol: int.parse(jsonMap['role']));
   }
 }

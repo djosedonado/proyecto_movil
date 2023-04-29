@@ -23,14 +23,14 @@ class Login extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: Stack(children: [
           Container(
-              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2, top: 80),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.2, top: 80),
               child: Column(
                 children: [
                   Text(
                     "PaintOut",
                     style: TextStyle(color: Colors.white, fontSize: 50),
                   ),
-
                   Text("hola como estas"),
                 ],
               )),
@@ -87,7 +87,8 @@ class Login extends StatelessWidget {
                       child: IconButton(
                         color: Colors.white,
                         onPressed: () {
-                          controuser.authUser(email.text, password.text)
+                          controuser
+                              .authUser(email.text, password.text)
                               .then((value) {
                             if (controuser.listUserAuth!.isEmpty) {
                               Get.snackbar('Usuarios', 'Usuario no Encontrado',
@@ -96,6 +97,17 @@ class Login extends StatelessWidget {
                                   shouldIconPulse: true,
                                   backgroundColor: Colors.yellow);
                             } else {
+                              if (controuser.listUserAuth![0].rol == 0) {
+                                Get.toNamed("/menuAdmin");
+                              }else if(controuser.listUserAuth![0].rol == 1){
+                                Get.toNamed("/menuBodega");
+                              }else{
+                                Get.snackbar('Usuarios', 'Usuario no tiene rol',
+                                  duration: const Duration(seconds: 3),
+                                  icon: const Icon(Icons.info),
+                                  shouldIconPulse: true,
+                                  backgroundColor: Colors.yellow);
+                              }
                               /*
                               controla
                                   .listArticlesId(
@@ -103,9 +115,7 @@ class Login extends StatelessWidget {
                                   .then(
                                       (value) => Get.toNamed("/listarticles"));
                                       */
-                                      Get.toNamed("/menuAdmin");
                             }
-                            
                           });
                         },
                         icon: const Icon(Icons.arrow_forward),
