@@ -21,7 +21,7 @@ class MenuBodega extends StatelessWidget {
           ],
         ),
       ),
-      endDrawer: Drawer(
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
