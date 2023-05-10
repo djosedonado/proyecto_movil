@@ -1,8 +1,9 @@
-class Messge {
-  late String messge;
-  Messge({required this.messge});
+class Mensajes {
+  late String mensaje;
 
-  factory Messge.desdeJson(Map<String,dynamic> jsonMap){
-    return Messge(messge: jsonMap['messge']);
+  Mensajes({required this.mensaje});
+
+  factory Mensajes.desdeJson(Map<String, dynamic> jsonMap) {
+    return Mensajes(mensaje: jsonMap['mensaje']);
   }
 }

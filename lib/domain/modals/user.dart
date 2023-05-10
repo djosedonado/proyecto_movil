@@ -6,6 +6,7 @@ class User {
   late String surName;
   late int state;
   late int rol;
+  late int index;
 
   User(
       {required this.id,
@@ -24,6 +25,6 @@ class User {
         email: jsonMap['email'],
         password: jsonMap['password'],
         state: int.parse(jsonMap['state']),
-        rol: int.parse(jsonMap['role']));
+        rol: int.parse(jsonMap['rol']));
   }
 }

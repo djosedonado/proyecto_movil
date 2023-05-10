@@ -31,7 +31,10 @@ class Login extends StatelessWidget {
                     "PaintOut",
                     style: TextStyle(color: Colors.white, fontSize: 50),
                   ),
-                  Text("hola como estas"),
+                  Text(
+                    "hola como estas",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
                 ],
               )),
           SingleChildScrollView(
@@ -88,25 +91,26 @@ class Login extends StatelessWidget {
                         color: Colors.white,
                         onPressed: () {
                           controuser
-                              .authUser(email.text, password.text)
+                              .validarUser(email.text, password.text)
                               .then((value) {
-                            if (controuser.listUserAuth!.isEmpty) {
+                            if (controuser.listaUserLogin!.isEmpty) {
                               Get.snackbar('Usuarios', 'Usuario no Encontrado',
                                   duration: const Duration(seconds: 3),
                                   icon: const Icon(Icons.info),
                                   shouldIconPulse: true,
-                                  backgroundColor: Colors.yellow);
+                                  backgroundColor: Colors.blue);
                             } else {
-                              if (controuser.listUserAuth![0].rol == 0) {
+                              if (controuser.listaUserLogin![0].rol == 0) {
                                 Get.toNamed("/menuAdmin");
-                              }else if(controuser.listUserAuth![0].rol == 1){
+                              } else if (controuser.listaUserLogin![0].rol ==
+                                  1) {
                                 Get.toNamed("/menuBodega");
-                              }else{
+                              } else {
                                 Get.snackbar('Usuarios', 'Usuario no tiene rol',
-                                  duration: const Duration(seconds: 3),
-                                  icon: const Icon(Icons.info),
-                                  shouldIconPulse: true,
-                                  backgroundColor: Colors.yellow);
+                                    duration: const Duration(seconds: 3),
+                                    icon: const Icon(Icons.info),
+                                    shouldIconPulse: true,
+                                    backgroundColor: Colors.blue);
                               }
                               /*
                               controla

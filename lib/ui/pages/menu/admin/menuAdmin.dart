@@ -1,24 +1,27 @@
+import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
 
-class MenuBodega extends StatelessWidget {
-  const MenuBodega({super.key});
+class MenuAdmin extends StatelessWidget {
+  const MenuAdmin({super.key});
 
   @override
   Widget build(BuildContext context) {
     ControllerUser controlu = Get.find();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Menu Bodega"),
+        title: Text("Menu Administrador"),
       ),
-      body: Center(
-        child: Row(
-          children: [
-            Text("Nombre: " + controlu.listaUserLogin![0].Name),
-            Text("Apellido: " + controlu.listaUserLogin![0].surName)
-          ],
+      body: Container(
+        padding: EdgeInsets.only(
+            top: 50, left: MediaQuery.of(context).size.width * 0.3),
+        child: Text(
+          "Hola " +
+              controlu.listaUserLogin![0].Name +
+              " " +
+              controlu.listaUserLogin![0].surName,
+          style: TextStyle(fontSize: 20),
         ),
       ),
       endDrawer: Drawer(
@@ -52,6 +55,15 @@ class MenuBodega extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Empleados'),
+              onTap: () {
+                controlu.listUsers();
+                controlu.listarUser.refresh();
+                Get.toNamed("/homeEmploye");
+              },
             ),
             ListTile(
               leading: Icon(Icons.assignment),

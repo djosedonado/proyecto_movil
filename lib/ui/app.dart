@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:proyecto_movil/ui/auth/login.dart';
-import 'package:proyecto_movil/ui/pages/menu/menuAdmin.dart';
+import 'package:proyecto_movil/ui/pages/Inventario/addNewArticle.dart';
+import 'package:proyecto_movil/ui/pages/Inventario/listInventario.dart';
+import 'package:proyecto_movil/ui/pages/menu/admin/employe/editEmploye.dart';
+import 'package:proyecto_movil/ui/pages/menu/admin/employe/listarEmploye.dart';
+import 'package:proyecto_movil/ui/pages/menu/admin/menuAdmin.dart';
+import 'package:proyecto_movil/ui/pages/menu/admin/employe/register.dart';
 import 'package:proyecto_movil/ui/pages/menu/menuBodega.dart';
 
 class App extends StatelessWidget {
@@ -18,6 +23,11 @@ class App extends StatelessWidget {
         "/login": (context) => const Login(),
         "/menuAdmin": (context) => const MenuAdmin(),
         "/menuBodega": (context) => const MenuBodega(),
+        "/registerEmploye": (context) => const Register(),
+        "/homeEmploye": (context) => const ListUsers(),
+        "/listInventario": (context) => const ListInventario(),
+        "/addNewArticle": (context) => const AddNewArticle(),
+        "/editarEmpleado": (context) => const EditarUser(),
       },
     );
   }
