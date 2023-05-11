@@ -80,7 +80,8 @@ class MenuBodega extends StatelessWidget {
               leading: Icon(Icons.close),
               title: Text('CERRAR SESSION'),
               onTap: () {
-                Get.toNamed("/login");
+                Get.back();
+                Get.back();
               },
             ),
           ],

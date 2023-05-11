@@ -24,7 +24,7 @@ class MenuAdmin extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
       ),
-      endDrawer: Drawer(
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -92,7 +92,8 @@ class MenuAdmin extends StatelessWidget {
               leading: Icon(Icons.close),
               title: Text('CERRAR SESSION'),
               onTap: () {
-                Get.toNamed("/login");
+                Get.back();
+                Get.back();
               },
             ),
           ],

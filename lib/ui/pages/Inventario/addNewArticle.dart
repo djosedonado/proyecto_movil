@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:proyecto_movil/domain/controlle/controllerArticle.dart';
@@ -95,6 +96,9 @@ class _AddNewArticleState extends State<AddNewArticle> {
                       child: Image.file(File(_pickedFile!.path)),
                     ),
               TextField(
+                inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
+                  ],
                 controller: name,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
