@@ -32,7 +32,9 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
 
     setState(() {
       _image = (image != null) ? File(image.path) : null;
-      base64 = base64Encode(File(image!.path).readAsBytesSync());
+      base64 = (_image != null)
+          ? base64Encode(File(image!.path).readAsBytesSync())
+          : null;
     });
   }
 
@@ -42,7 +44,9 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
 
     setState(() {
       _image = (image != null) ? File(image.path) : null;
-      base64 = base64Encode(File(image!.path).readAsBytesSync());
+      base64 = (_image != null)
+          ? base64Encode(File(image!.path).readAsBytesSync())
+          : null;
     });
   }
 
