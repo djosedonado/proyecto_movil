@@ -1,26 +1,21 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../domain/controlle/controllerArticle.dart';
-import '../../../domain/controlle/controllerUser.dart';
+import 'package:image_picker/image_picker.dart';
 
-class AddNewArticle_V1 extends StatefulWidget {
-  const AddNewArticle_V1({super.key});
+class EditarPerfil extends StatefulWidget {
+  const EditarPerfil({super.key});
 
   @override
-  State<AddNewArticle_V1> createState() => _AddNewArticle_V1State();
+  State<EditarPerfil> createState() => _EditarPerfilState();
 }
 
-class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
+class _EditarPerfilState extends State<EditarPerfil> {
   final _keyFrom = GlobalKey<FormState>();
-  ControllerArticle controla = Get.find();
-  ControllerUser controlu = Get.find();
-  TextEditingController name = TextEditingController();
-  TextEditingController codigo = TextEditingController();
-  TextEditingController unidad = TextEditingController();
-  TextEditingController valor = TextEditingController();
+  TextEditingController name= TextEditingController();
+  TextEditingController surname= TextEditingController();
+  TextEditingController email= TextEditingController();
+  TextEditingController password= TextEditingController();
 
   ImagePicker picker = ImagePicker();
   var _image;
@@ -50,45 +45,11 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
     });
   }
 
-  operacionCrearArticulo(String name, String codigo, String unidad, String id,
-      String valor, String base) {
-    print(base);
-    if (base == "null") {
-      return Get.snackbar('Articulos', "Imagen no Seleccionada",
-          duration: const Duration(seconds: 3),
-          icon: const Icon(Icons.info),
-          shouldIconPulse: true,
-          backgroundColor: Colors.blue);
-    } else {
-      return controla
-          .addNewArticles(name, codigo, unidad, id, valor, base)
-          .then((value) {
-        return Get.snackbar('Articulos', controla.listaMensajes![0].mensaje,
-            duration: const Duration(seconds: 3),
-            icon: const Icon(Icons.info),
-            shouldIconPulse: true,
-            backgroundColor: Colors.blue);
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Productos"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                _camara();
-              },
-              icon: Icon(Icons.camera)),
-          IconButton(
-              onPressed: () {
-                _galeria();
-              },
-              icon: Icon(Icons.image))
-        ],
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -129,7 +90,7 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
                             if (value!.isEmpty) {
                               return "Campo Vacio";
                             }
-                            if (value.length < 1 || value.length > 40) {
+                            if (value.length < 4 || value.length > 40) {
                               return "El campo Nombre debe tener entre 4 y 40 caracteres";
                             }
                             return null;
@@ -151,13 +112,13 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
                             if (value!.isEmpty) {
                               return "Campo Vacio";
                             }
-                            if (value.length < 2 || value.length > 10) {
+                            if (value.length < 4 || value.length > 10) {
                               return "El campo debe tener entre 4 y 10 caracteres";
                             }
                             return null;
                           },
-                          controller: codigo,
-                          keyboardType: TextInputType.number,
+                          controller: surname,
+                          keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                               icon: Icon(Icons.code),
                               labelText: 'Codigo del Articulo',
@@ -173,15 +134,15 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
                             if (value!.isEmpty) {
                               return "Campo Vacio";
                             }
-                            if (value.length < 1 || value.length > 10) {
+                            if (value.length < 4 || value.length > 10) {
                               return "El campo debe tener entre 4 y 10 caracteres";
                             }
                             return null;
                           },
-                          controller: unidad,
-                          keyboardType: TextInputType.number,
+                          controller: email,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                              icon: Icon(Icons.numbers),
+                              icon: Icon(Icons.email),
                               labelText: 'Unidades Entrante',
                               border: OutlineInputBorder(),
                               isDense: false,
@@ -195,13 +156,13 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
                             if (value!.isEmpty) {
                               return "Campo Vacio";
                             }
-                            if (value.length < 1 || value.length > 10) {
+                            if (value.length < 4 || value.length > 10) {
                               return "El campo debe tener entre 4 y 10 caracteres";
                             }
                             return null;
                           },
-                          controller: valor,
-                          keyboardType: TextInputType.number,
+                          controller: password,
+                          keyboardType: TextInputType.visiblePassword,
                           decoration: InputDecoration(
                               icon: Icon(Icons.monetization_on),
                               labelText: 'Costo de la Mercancia',
@@ -220,13 +181,7 @@ class _AddNewArticle_V1State extends State<AddNewArticle_V1> {
                           child: ElevatedButton(
                               onPressed: () {
                                 if (_keyFrom.currentState!.validate()) {
-                                  operacionCrearArticulo(
-                                      name.text,
-                                      codigo.text,
-                                      unidad.text,
-                                      controlu.listaUserLogin![0].id.toString(),
-                                      valor.text,
-                                      base64.toString());
+                                  print("exitoso");
                                 } else {
                                   print("A ocurrido error");
                                 }

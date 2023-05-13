@@ -16,8 +16,7 @@ class MenuBodega extends StatelessWidget {
       body: Center(
         child: Row(
           children: [
-            Text("Nombre: " + controlu.listaUserLogin![0].Name),
-            Text("Apellido: " + controlu.listaUserLogin![0].surName)
+           Center(child:  Text("WELCOME ${controlu.listaUserLogin![0].Name}  ${controlu.listaUserLogin![0].surName}"),)
           ],
         ),
       ),

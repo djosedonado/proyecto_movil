@@ -61,6 +61,7 @@ class Login extends StatelessWidget {
                 TextField(
                   controller: password,
                   obscureText: true,
+                  keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                     fillColor: Colors.grey.shade100,
                     filled: true,

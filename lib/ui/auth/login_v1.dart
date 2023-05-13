@@ -10,9 +10,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _keyFrom = GlobalKey<FormState>();
   ControllerUser controluser = Get.find();
-
   TextEditingController _emailController = TextEditingController();
-
   TextEditingController _passwordController = TextEditingController();
 
   opreracionLogin(email, password) {
@@ -41,81 +39,93 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _keyFrom,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'campo vacio';
-                  }
-                  if(value.isEmpty==value.isEmail){
-                    return "El campo no se lleno correctamente";
-                  }
-                  return null;
-                },
-                controller: _emailController,
-                onEditingComplete: () {
-                  if (_keyFrom.currentState!.validate()) {
-                    opreracionLogin(
-                      _emailController.text, _passwordController.text);
-                  } else {
-                    print("no se pudo carnal");
-                  }
-                },
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
-              ),
-              SizedBox(height: 16.0),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'campo vacio';
-                  }
-                  if (value.length<6 || value.length>50){
-                    return "campo fuera de rango";
-                  }
-                  return null;
-                },
-                controller: _passwordController,
-                onEditingComplete: () {
-                  if (_keyFrom.currentState!.validate()) {
-                    opreracionLogin(
-                      _emailController.text, _passwordController.text);
-                  } else {
-                    print("no se pudo carnal");
-                  }
-                },
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  if (_keyFrom.currentState!.validate()) {
-                    opreracionLogin(
-                      _emailController.text, _passwordController.text);
-                  } else {
-                    print("no se pudo carnal");
-                  }
-                },
-                child: Text('Login'),
-              ),
-            ],
-          ),
+    return Container(
+      /*
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/Fondo_v1.png'), fit: BoxFit.cover),
         ),
-      ),
-    );
+        */
+        child: Scaffold(
+            backgroundColor: Colors.white,
+            body: Stack(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(16.0),
+                  child: Form(
+                    key: _keyFrom,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'campo vacio';
+                            }
+                            if (value.isEmpty == value.isEmail) {
+                              return "El campo no se lleno correctamente";
+                            }
+                            return null;
+                          },
+                          controller: _emailController,
+                          onEditingComplete: () {
+                            if (_keyFrom.currentState!.validate()) {
+                              opreracionLogin(_emailController.text,
+                                  _passwordController.text);
+                            } else {
+                              print("no se pudo carnal");
+                            }
+                          },
+                          decoration: InputDecoration(
+                            icon: Icon(Icons.email),
+                            labelText: 'Email',
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                        SizedBox(height: 16.0),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'campo vacio';
+                            }
+                            if (value.length < 6 || value.length > 50) {
+                              return "campo fuera de rango";
+                            }
+                            return null;
+                          },
+                          controller: _passwordController,
+                          onEditingComplete: () {
+                            if (_keyFrom.currentState!.validate()) {
+                              opreracionLogin(_emailController.text,
+                                  _passwordController.text);
+                            } else {
+                              print("no se pudo carnal");
+                            }
+                          },
+                          decoration: InputDecoration(
+                            icon: Icon(Icons.password_outlined),
+                            labelText: 'Password',
+                            border: OutlineInputBorder()
+                          ),
+                          obscureText: true,
+                        ),
+                        SizedBox(height: 16.0),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_keyFrom.currentState!.validate()) {
+                              opreracionLogin(_emailController.text,
+                                  _passwordController.text);
+                            } else {
+                              print("no se pudo carnal");
+                            }
+                          },
+                          child: Text('Login'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )));
   }
 }

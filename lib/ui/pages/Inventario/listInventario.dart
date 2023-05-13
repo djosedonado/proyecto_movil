@@ -32,8 +32,8 @@ class ListInventario extends StatelessWidget {
               leading: SizedBox(
                 child: Image.memory(
                   bytes,
-                  width: 200,
-                  height: 300,
+                  width: 100,
+                  height: 200,
                 ),
               ),
               title: Row(
