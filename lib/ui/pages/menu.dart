@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proyecto_movil/domain/controlle/controllerArticle.dart';
 import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
 
 class Menu extends StatelessWidget {
@@ -53,6 +54,7 @@ class ProductosInventario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ControllerArticle controla = Get.find();
     return Column(
       children: [
         ListTile(
@@ -68,12 +70,14 @@ class ProductosInventario extends StatelessWidget {
           title: Text('INVENTARIO'),
           onTap: () {
             Get.toNamed(
-                "/listInventario"); // Acción que se ejecuta al presionar la opción
+                "/listInventario");
+                controla.listArticle();
+                controla.listarArticle.refresh();
           },
         ),
         ListTile(
           leading: Icon(Icons.settings),
-          title: Text('Perfil'),
+          title: Text('PERFIL'),
           onTap: () {
             // Acción que se ejecuta al presionar la opción
             Get.toNamed("/perfileUser");
@@ -127,9 +131,8 @@ class Admin extends StatelessWidget {
         ),
         ListTile(
           leading: Icon(Icons.settings),
-          title: Text('Perfil'),
+          title: Text('PERFILE'),
           onTap: () {
-            // Acción que se ejecuta al presionar la opción
             Get.toNamed("/perfileUser");
           },
         ),

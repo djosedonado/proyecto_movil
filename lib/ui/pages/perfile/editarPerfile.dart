@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
+import 'package:proyecto_movil/ui/auth/textFormFile.dart';
 
 class EditarPerfil extends StatefulWidget {
   const EditarPerfil({super.key});
@@ -11,6 +14,7 @@ class EditarPerfil extends StatefulWidget {
 }
 
 class _EditarPerfilState extends State<EditarPerfil> {
+  ControllerUser controlu = Get.find();
   final _keyFrom = GlobalKey<FormState>();
   TextEditingController name = TextEditingController();
   TextEditingController surname = TextEditingController();
@@ -47,6 +51,10 @@ class _EditarPerfilState extends State<EditarPerfil> {
 
   @override
   Widget build(BuildContext context) {
+    name.text = controlu.listaUserLogin![0].Name;
+    surname.text = controlu.listaUserLogin![0].surName;
+    email.text = controlu.listaUserLogin![0].email;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Perfil"),
@@ -88,6 +96,62 @@ class _EditarPerfilState extends State<EditarPerfil> {
                       },
                     ),
                   ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: TextFormFile_Input(
+                      controller: name,
+                      texto: "Nombre",
+                      colors: Colors.black,
+                      icono: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: TextFormFile_Input(
+                      controller: surname,
+                      texto: "Apellido",
+                      colors: Colors.black,
+                      icono: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: TextFormFile_Input(
+                      controller: email,
+                      texto: "Email",
+                      editable: false,
+                      colors: Colors.black,
+                      icono: Icon(
+                        Icons.email,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: TextFormFile_Input(
+                      controller: password,
+                      texto: "Password",
+                      colors: Colors.black,
+                      pass: true,
+                      icono: Icon(
+                        Icons.password,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30,),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.70,
+                      height: 60,
+                      child: ElevatedButton(
+                          onPressed: () {}, child: Icon(Icons.account_circle))),
                 ],
               )),
         ),

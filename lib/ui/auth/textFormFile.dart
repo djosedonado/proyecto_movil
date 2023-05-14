@@ -11,11 +11,13 @@ class TextFormFile_Input extends StatelessWidget {
   final TextInputType? tipoTeclado;
   final bool? pass;
   final bool? editable;
+  final bool? editarPerfil;
   const TextFormFile_Input(
       {Key? key,
       this.funcion,
       this.colors,
       this.icono,
+      this.editarPerfil = false,
       this.controller,
       this.hintText,
       required this.texto,
@@ -41,8 +43,8 @@ class TextFormFile_Input extends StatelessWidget {
             return "Dominio Icorrecto";
           }
         }
-        if(texto=="Name"){
-          if(value.length<2 || value.length>30){
+        if (texto == "Name") {
+          if (value.length < 2 || value.length > 30) {
             return "El nombre es 2 y 30";
           }
         }
@@ -51,19 +53,21 @@ class TextFormFile_Input extends StatelessWidget {
       keyboardType: tipoTeclado,
       enabled: editable,
       obscureText: pass ?? false,
-      style: TextStyle(fontSize: 20,color: colors==null? Colors.white: colors),
+      style: TextStyle(
+          fontSize: 20, color: colors == null ? Colors.white : colors),
       decoration: InputDecoration(
           icon: icono,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: colors == null ? Colors.white : colors),
           hintText: hintText ?? '',
-          hintStyle: TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: colors == null ? Colors.white : colors),
           labelText: texto,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(40),
-              borderSide: const BorderSide(color: Colors.white, width: 3)),
+              borderSide: BorderSide(color: colors ?? Colors.white, width: 1)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(40),
-              borderSide: const BorderSide(color: Colors.white, width: 3)),
+              borderSide: BorderSide(color: colors ?? Colors.white, width: 1)),
+          isDense: false,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
           )),

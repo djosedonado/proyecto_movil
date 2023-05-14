@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
+import 'package:proyecto_movil/ui/pages/menu.dart';
 
 class MenuBodega extends StatelessWidget {
   const MenuBodega({super.key});
@@ -16,10 +17,17 @@ class MenuBodega extends StatelessWidget {
       body: Center(
         child: Row(
           children: [
-           Center(child:  Text("WELCOME ${controlu.listaUserLogin![0].Name}  ${controlu.listaUserLogin![0].surName}"),)
+            Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.3),
+              child: Text(
+                  "WELCOME ${controlu.listaUserLogin![0].Name}  ${controlu.listaUserLogin![0].surName}"),
+            ),
+            
           ],
         ),
       ),
+      drawer: Menu(Name: controlu.listaUserLogin![0].Name,surName: controlu.listaUserLogin![0].surName,),
     );
   }
 }

@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'PaintOut',
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: '/perfileUser',
+      initialRoute: '/login',
       routes: {
         "/login": (context) => LoginScreen(),
         "/menuAdmin": (context) => const MenuAdmin(),
