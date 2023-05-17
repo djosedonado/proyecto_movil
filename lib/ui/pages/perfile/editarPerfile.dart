@@ -49,6 +49,19 @@ class _EditarPerfilState extends State<EditarPerfil> {
     });
   }
 
+  eventoEditarPerfil(
+      String Id, String Name, String surName, String Email, String Password) {
+    controlu
+        .editarUser(Id, Name, surName, Email, Password, '0', '1')
+        .then((value) {
+      return Get.snackbar('Clientes', controlu.listaMensajes![0].mensaje,
+          duration: const Duration(seconds: 4),
+          icon: const Icon(Icons.info),
+          shouldIconPulse: true,
+          backgroundColor: Color.fromARGB(255, 19, 58, 233));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     name.text = controlu.listaUserLogin![0].Name;
@@ -106,6 +119,16 @@ class _EditarPerfilState extends State<EditarPerfil> {
                         Icons.person,
                         color: Colors.black,
                       ),
+                      funcion: () {
+                        if (_keyFrom.currentState!.validate()) {
+                          eventoEditarPerfil(
+                              controlu.listaUserLogin![0].id.toString(),
+                              name.text,
+                              surname.text,
+                              email.text,
+                              password.text);
+                        }
+                      },
                     ),
                   ),
                   Container(
@@ -118,6 +141,16 @@ class _EditarPerfilState extends State<EditarPerfil> {
                         Icons.person,
                         color: Colors.black,
                       ),
+                      funcion: () {
+                        if (_keyFrom.currentState!.validate()) {
+                          eventoEditarPerfil(
+                              controlu.listaUserLogin![0].id.toString(),
+                              name.text,
+                              surname.text,
+                              email.text,
+                              password.text);
+                        }
+                      },
                     ),
                   ),
                   Container(
@@ -131,6 +164,16 @@ class _EditarPerfilState extends State<EditarPerfil> {
                         Icons.email,
                         color: Colors.black,
                       ),
+                      funcion: () {
+                        if (_keyFrom.currentState!.validate()) {
+                          eventoEditarPerfil(
+                              controlu.listaUserLogin![0].id.toString(),
+                              name.text,
+                              surname.text,
+                              email.text,
+                              password.text);
+                        }
+                      },
                     ),
                   ),
                   Container(
@@ -144,14 +187,36 @@ class _EditarPerfilState extends State<EditarPerfil> {
                         Icons.password,
                         color: Colors.black,
                       ),
+                      funcion: () {
+                        if (_keyFrom.currentState!.validate()) {
+                          eventoEditarPerfil(
+                              controlu.listaUserLogin![0].id.toString(),
+                              name.text,
+                              surname.text,
+                              email.text,
+                              password.text);
+                        }
+                      },
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   SizedBox(
                       width: MediaQuery.of(context).size.width * 0.70,
                       height: 60,
                       child: ElevatedButton(
-                          onPressed: () {}, child: Icon(Icons.account_circle))),
+                          onPressed: () {
+                            if (_keyFrom.currentState!.validate()) {
+                              eventoEditarPerfil(
+                                  controlu.listaUserLogin![0].id.toString(),
+                                  name.text,
+                                  surname.text,
+                                  email.text,
+                                  password.text);
+                            }
+                          },
+                          child: Icon(Icons.account_circle))),
                 ],
               )),
         ),

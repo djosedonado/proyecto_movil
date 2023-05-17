@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../domain/controlle/controllerUser.dart';
 
 class EditarUser extends StatefulWidget {

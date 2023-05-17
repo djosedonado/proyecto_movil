@@ -48,6 +48,11 @@ class TextFormFile_Input extends StatelessWidget {
             return "El nombre es 2 y 30";
           }
         }
+        if(texto == 'Cantidad' || texto == 'Valor'){
+          if(value.length<1){
+            return "no es permitido valores negativos";
+          }
+        }
         return null;
       },
       keyboardType: tipoTeclado,
