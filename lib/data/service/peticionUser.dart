@@ -36,11 +36,45 @@ class PeticionesUser {
       'email': email,
       'password': password,
       'rol': rol,
-      'state': state
+      'state': state,
     });
 
     print(response.statusCode);
     print(response.body);
+    return compute(convertirAlista, response.body);
+  }
+
+  // Metodo editar Perfil
+  static Future<List<Mensajes>> editarUserPerfil(
+      String id, String name, String surname, String foto) async {
+    var url = Uri.parse(
+        "https://newproyectdanilo.000webhostapp.com/PaintOut/editUser.php");
+
+    final response = await http.post(url, body: {
+      'id': id,
+      'image': foto,
+      'name': name,
+      'surname': surname,
+    });
+
+    print(response.statusCode);
+    //print(response.body);
+    return compute(convertirAlista, response.body);
+  }
+
+  //Metodo Cambiar Contraseña
+  static Future<List<Mensajes>> CambiarPasswordUser(
+      String id, String password) async {
+    var url = Uri.parse(
+        "https://newproyectdanilo.000webhostapp.com/PaintOut/editUser.php");
+
+    final response = await http.post(url, body: {
+      'id': id,
+      'password': password,
+    });
+
+    print(response.statusCode);
+    //print(response.body);
     return compute(convertirAlista, response.body);
   }
 
@@ -57,6 +91,7 @@ class PeticionesUser {
     print(response.body);
     return compute(convertirAlista, response.body);
   }
+
 // Metodo de registrar
   static Future<List<Mensajes>> registrarUser(String name, String surname,
       String email, String password, String rol, String state) async {

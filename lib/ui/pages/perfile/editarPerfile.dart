@@ -71,6 +71,54 @@ class _EditarPerfilState extends State<EditarPerfil> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Perfil"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.white,
+                        contentPadding: EdgeInsets.all(10),
+                        content: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 20,),
+                              TextFormFile_Input(
+                                texto: "Password",
+                                colors: Colors.black,
+                                icono: Icon(
+                                  Icons.key,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              TextFormFile_Input(
+                                texto: "Password",
+                                colors: Colors.black,
+                                icono: Icon(
+                                  Icons.key,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {},
+                                  child: Text("Cambiar Password",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white)))
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              icon: Icon(Icons.key))
+        ],
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -162,29 +210,6 @@ class _EditarPerfilState extends State<EditarPerfil> {
                       colors: Colors.black,
                       icono: Icon(
                         Icons.email,
-                        color: Colors.black,
-                      ),
-                      funcion: () {
-                        if (_keyFrom.currentState!.validate()) {
-                          eventoEditarPerfil(
-                              controlu.listaUserLogin![0].id.toString(),
-                              name.text,
-                              surname.text,
-                              email.text,
-                              password.text);
-                        }
-                      },
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: TextFormFile_Input(
-                      controller: password,
-                      texto: "Password",
-                      colors: Colors.black,
-                      pass: true,
-                      icono: Icon(
-                        Icons.password,
                         color: Colors.black,
                       ),
                       funcion: () {

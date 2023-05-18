@@ -19,6 +19,18 @@ class ControllerUser extends GetxController {
         id, name, surname, email, password, rol, state);
   }
 
+  Future<void> editarUserPerfil(
+      String id, String name, String surname, String foto) async {
+    _listarMensajes.value =
+        await PeticionesUser.editarUserPerfil(id, name, surname, foto);
+  }
+
+  Future<void> cambiarPasswordUser(
+      String id, String password) async {
+    _listarMensajes.value =
+        await PeticionesUser.CambiarPasswordUser(id, password);
+  }
+
   Future<void> eliminarUser(String id) async {
     _listarMensajes.value = await PeticionesUser.eliminarUser(id);
   }

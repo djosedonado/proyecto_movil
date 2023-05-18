@@ -15,34 +15,37 @@ class Menu extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Column(
-              children: [
-                Text(
-                  'Menú',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height*0.3,
+            child: DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Menú',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
                   ),
-                ),
-                Padding(padding: EdgeInsets.only(top: 20)),
-                Icon(
-                  Icons.person,
-                  size: 50,
-                  color: Colors.white,
-                ),
-                Text(
-                  Name! + " " + surName!,
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ],
+                  Padding(padding: EdgeInsets.only(top: 20)),
+                  Icon(
+                    Icons.person,
+                    size: 50,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    Name! + " " + surName!,
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                ],
+              ),
             ),
           ),
-          esAdmin == true ? Admin(): ProductosInventario(),
+          esAdmin == true ? Admin() : ProductosInventario(),
         ],
       ),
     );
@@ -69,10 +72,9 @@ class ProductosInventario extends StatelessWidget {
           leading: Icon(Icons.fact_check),
           title: Text('INVENTARIO'),
           onTap: () {
-            Get.toNamed(
-                "/listInventario");
-                controla.listArticle();
-                controla.listarArticle.refresh();
+            Get.toNamed("/listInventario");
+            controla.listArticle();
+            controla.listarArticle.refresh();
           },
         ),
         ListTile(

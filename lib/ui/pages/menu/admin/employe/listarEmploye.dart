@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
@@ -25,6 +28,8 @@ class ListUsers extends StatelessWidget {
         () => ListView.builder(
           itemCount: controlu.listaUserLogin!.length,
           itemBuilder: (BuildContext context, int index) {
+            Uint8List bytes =
+                base64Decode(controlu.listaUserLogin![index].foto);
             return Dismissible(
               key: Key(controlu.listaUserLogin![index].id.toString()),
               background: Container(
@@ -50,7 +55,11 @@ class ListUsers extends StatelessWidget {
               child: controlu.listaUserLogin![index].rol == 1
                   ? ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(""),
+                        child: controlu.listaUserLogin![index].foto == ""
+                            ? Icon(Icons.person)
+                            : SizedBox(
+                                child: Image.memory(bytes),
+                              ),
                       ),
                       title: Text(
                           "${controlu.listaUserLogin![index].Name}  ${controlu.listaUserLogin![index].surName}"),
@@ -74,6 +83,7 @@ class ListUsers extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          print(controlu.listaUserLogin![0].foto);
           Get.toNamed("/registerEmploye");
         },
         tooltip: 'Increment Counter',
