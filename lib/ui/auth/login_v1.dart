@@ -11,11 +11,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _keyFrom = GlobalKey<FormState>();
   ControllerUser controluser = Get.find();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-
   opreracionLogin(String e, String p) {
-    print(e+" "+p);
+    print(e + " " + p);
     controluser.validarUser(e, p).then((value) {
       if (controluser.listaUserLogin!.isEmpty) {
         return Get.snackbar('Usuarios', 'Usuario no Encontrado',
@@ -41,6 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    controluser.verLocal();
+    TextEditingController email =
+        TextEditingController(text: controluser.emailLocal);
+    TextEditingController password =
+        TextEditingController(text: controluser.passwordLocal);
     return Scaffold(
         body: Stack(
       children: [
@@ -62,10 +64,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Icons.email,
                     color: Colors.white,
                   ),
-                  funcion: (){
+                  funcion: () {
                     if (_keyFrom.currentState!.validate()) {
-                      opreracionLogin(
-                          email.text, password.text);
+                      opreracionLogin(email.text, password.text);
                     } else {
                       print("no se pudo carnal");
                     }
@@ -80,10 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Icons.password_rounded,
                     color: Colors.white,
                   ),
-                  funcion: (){
+                  funcion: () {
                     if (_keyFrom.currentState!.validate()) {
-                      opreracionLogin(
-                          email.text, password.text);
+                      opreracionLogin(email.text, password.text);
                     } else {
                       print("no se pudo carnal");
                     }
@@ -93,8 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (_keyFrom.currentState!.validate()) {
-                      opreracionLogin(
-                          email.text, password.text);
+                      opreracionLogin(email.text, password.text);
                     } else {
                       print("no se pudo carnal");
                     }
