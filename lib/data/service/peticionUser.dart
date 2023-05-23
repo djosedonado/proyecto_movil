@@ -66,11 +66,11 @@ class PeticionesUser {
   static Future<List<Mensajes>> CambiarPasswordUser(
       String id, String password) async {
     var url = Uri.parse(
-        "https://newproyectdanilo.000webhostapp.com/PaintOut/editUser.php");
+        "https://newproyectdanilo.000webhostapp.com/PaintOut/cambiarPassword.php");
 
     final response = await http.post(url, body: {
       'id': id,
-      'password': password,
+      'pass': password,
     });
 
     print(response.statusCode);
