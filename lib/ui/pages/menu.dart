@@ -20,7 +20,8 @@ class Menu extends StatelessWidget {
             height: MediaQuery.of(context).size.height*0.3,
             child: DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('assets/fondo3.png'), fit: BoxFit.cover)
               ),
               child: Column(
                 children: [

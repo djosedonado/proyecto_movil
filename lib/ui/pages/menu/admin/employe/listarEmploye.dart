@@ -13,7 +13,7 @@ class ListUsers extends StatelessWidget {
     ControllerUser controlu = Get.find();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("INVENTARIO"),
+        title: const Text("Lista de Empleado"),
         actions: [
           IconButton(
             onPressed: () {

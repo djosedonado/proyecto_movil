@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
             duration: const Duration(seconds: 3),
             icon: const Icon(Icons.info),
             shouldIconPulse: true,
-            backgroundColor: Colors.blue);
+            backgroundColor: Colors.blue[100]);
       } else {
         if (controluser.listaUserLogin![0].rol == 0) {
           return Get.toNamed("/menuAdmin");
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/fondo.png'), fit: BoxFit.cover)),
+                  image: AssetImage('assets/fondo3.png'), fit: BoxFit.cover)),
           padding: EdgeInsets.all(16.0),
           child: Form(
             key: _keyFrom,
@@ -60,9 +60,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormFile_Input(
                   texto: "Email",
                   controller: email,
+                  colors: Colors.blue[100],
                   icono: Icon(
                     Icons.email,
-                    color: Colors.white,
+                    color: Colors.blue[100],
                   ),
                   funcion: () {
                     if (_keyFrom.currentState!.validate()) {
@@ -77,9 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: password,
                   pass: true,
                   texto: "Password",
+                  colors: Colors.blue[100],
                   icono: Icon(
                     Icons.password_rounded,
-                    color: Colors.white,
+                    color: Colors.blue[100],
                   ),
                   funcion: () {
                     if (_keyFrom.currentState!.validate()) {
@@ -91,6 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 16.0),
                 ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateColor.resolveWith((states) => Color.fromARGB(255, 97, 117, 236))),
                   onPressed: () {
                     if (_keyFrom.currentState!.validate()) {
                       opreracionLogin(email.text, password.text);
@@ -115,9 +119,9 @@ class backgroundFondo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF1C157F),
+      color: Colors.white,
       height: double.infinity,
-      child: Image(image: AssetImage('assets/fondo.png')),
+      child: Image(image: AssetImage('assets/fondo3.png')),
     );
   }
 }

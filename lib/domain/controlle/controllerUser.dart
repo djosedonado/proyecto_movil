@@ -12,38 +12,52 @@ class ControllerUser extends GetxController {
 
   Future<void> crearUser(String name, String surname, String email,
       String password, String rol, String state) async {
-    _listarMensajes.value = await PeticionesUser.registrarUser(
-        name, surname, email, password, rol, state);
+    try {
+      _listarMensajes.value = await PeticionesUser.registrarUser(
+          name, surname, email, password, rol, state);
+    } catch (e) {}
   }
 
   Future<void> editarUser(String id, String name, String surname, String email,
       String password, String rol, String state) async {
-    _listarMensajes.value = await PeticionesUser.editarUser(
-        id, name, surname, email, password, rol, state);
+    try {
+      _listarMensajes.value = await PeticionesUser.editarUser(
+          id, name, surname, email, password, rol, state);
+    } catch (e) {}
   }
 
   Future<void> editarUserPerfil(
       String id, String name, String surname, String foto) async {
-    _listarMensajes.value =
-        await PeticionesUser.editarUserPerfil(id, name, surname, foto);
+    try {
+      _listarMensajes.value =
+          await PeticionesUser.editarUserPerfil(id, name, surname, foto);
+    } catch (e) {}
   }
 
   Future<void> cambiarPasswordUser(String id, String password) async {
-    _listarMensajes.value =
-        await PeticionesUser.CambiarPasswordUser(id, password);
+    try {
+      _listarMensajes.value =
+          await PeticionesUser.CambiarPasswordUser(id, password);
+    } catch (e) {}
   }
 
   Future<void> eliminarUser(String id) async {
-    _listarMensajes.value = await PeticionesUser.eliminarUser(id);
+    try {
+      _listarMensajes.value = await PeticionesUser.eliminarUser(id);
+    } catch (e) {}
   }
 
   Future<void> validarUser(String u, String p) async {
-    listarUser.value = await PeticionesUser.validarUser(u, p);
-    guardarLocal();
+    try {
+      listarUser.value = await PeticionesUser.validarUser(u, p);
+      guardarLocal();
+    } catch (e) {}
   }
 
   Future<void> listUsers() async {
-    listarUser.value = await PeticionesUser.getListUser();
+    try {
+      listarUser.value = await PeticionesUser.getListUser();
+    } catch (e) {}
   }
 
   Future<void> guardarLocal() async {

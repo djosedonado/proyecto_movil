@@ -27,7 +27,7 @@ class _EditarUserState extends State<EditarUser> {
         controlu.listaUserLogin![controlu.listaUserLogin![0].index].email;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registrar Empleado"),
+        title: Text("Editar Empleado"),
       ),
       body: SafeArea(
         child: Container(

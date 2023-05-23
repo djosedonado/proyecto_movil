@@ -61,7 +61,7 @@ class _RegisterState extends State<Register> {
                                 .crearUser(name.text, surname.text, email.text,
                                     password.text, "1", "1")
                                 .then((value) {
-                              Get.snackbar('Clientes',
+                              Get.snackbar('Usuario',
                                   controlu.listaMensajes![0].mensaje,
                                   duration: const Duration(seconds: 3),
                                   icon: const Icon(Icons.info),
@@ -102,7 +102,7 @@ class _RegisterState extends State<Register> {
                                 .crearUser(name.text, surname.text, email.text,
                                     password.text, "1", "1")
                                 .then((value) {
-                              Get.snackbar('Clientes',
+                              Get.snackbar('Usuario',
                                   controlu.listaMensajes![0].mensaje,
                                   duration: const Duration(seconds: 3),
                                   icon: const Icon(Icons.info),
@@ -144,7 +144,7 @@ class _RegisterState extends State<Register> {
                                 .crearUser(name.text, surname.text, email.text,
                                     password.text, "1", "1")
                                 .then((value) {
-                              Get.snackbar('Clientes',
+                              Get.snackbar('Usuario',
                                   controlu.listaMensajes![0].mensaje,
                                   duration: const Duration(seconds: 3),
                                   icon: const Icon(Icons.info),
@@ -184,7 +184,7 @@ class _RegisterState extends State<Register> {
                                 .crearUser(name.text, surname.text, email.text,
                                     password.text, "1", "1")
                                 .then((value) {
-                              Get.snackbar('Clientes',
+                              Get.snackbar('Usuario',
                                   controlu.listaMensajes![0].mensaje,
                                   duration: const Duration(seconds: 3),
                                   icon: const Icon(Icons.info),
@@ -209,7 +209,7 @@ class _RegisterState extends State<Register> {
                                 .crearUser(name.text, surname.text, email.text,
                                     password.text, "1", "1")
                                 .then((value) {
-                              Get.snackbar('Clientes',
+                              Get.snackbar('Usuario',
                                   controlu.listaMensajes![0].mensaje,
                                   duration: const Duration(seconds: 3),
                                   icon: const Icon(Icons.info),

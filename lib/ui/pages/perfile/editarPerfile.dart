@@ -56,11 +56,11 @@ class _EditarPerfilState extends State<EditarPerfil> {
     controlu
         .editarUser(Id, Name, surName, Email, Password, '0', '1')
         .then((value) {
-      return Get.snackbar('Clientes', controlu.listaMensajes![0].mensaje,
+      return Get.snackbar('Usuario', controlu.listaMensajes![0].mensaje,
           duration: const Duration(seconds: 4),
           icon: const Icon(Icons.info),
           shouldIconPulse: true,
-          backgroundColor: Color.fromARGB(255, 19, 58, 233));
+          backgroundColor: Colors.blue[100]);
     });
   }
 

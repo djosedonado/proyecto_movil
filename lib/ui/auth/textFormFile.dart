@@ -67,14 +67,14 @@ class TextFormFile_Input extends StatelessWidget {
           hintStyle: TextStyle(color: colors == null ? Colors.white : colors),
           labelText: texto,
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: colors ?? Colors.white, width: 1)),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
+              borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: colors ?? Colors.white, width: 1)),
           isDense: false,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(40),
+            borderRadius: BorderRadius.circular(10),
           )),
       controller: controller,
       onEditingComplete: funcion,
