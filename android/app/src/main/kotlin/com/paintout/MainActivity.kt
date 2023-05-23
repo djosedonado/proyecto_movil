@@ -1,4 +1,4 @@
-package com.example.proyecto_movil
+package com.paintout
 
 import io.flutter.embedding.android.FlutterActivity
 
