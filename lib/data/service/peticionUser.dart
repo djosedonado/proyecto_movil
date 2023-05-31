@@ -48,7 +48,7 @@ class PeticionesUser {
   static Future<List<Mensajes>> editarUserPerfil(
       String id, String name, String surname, String foto) async {
     var url = Uri.parse(
-        "https://newproyectdanilo.000webhostapp.com/PaintOut/editUser.php");
+        "https://newproyectdanilo.000webhostapp.com/PaintOut/editarPerfil.php");
 
     final response = await http.post(url, body: {
       'id': id,

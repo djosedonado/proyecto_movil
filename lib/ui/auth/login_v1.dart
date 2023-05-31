@@ -94,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 16.0),
                 ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateColor.resolveWith((states) => Color.fromARGB(255, 97, 117, 236))),
+                      backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => Color.fromARGB(255, 97, 117, 236))),
                   onPressed: () {
                     if (_keyFrom.currentState!.validate()) {
                       opreracionLogin(email.text, password.text);
