@@ -21,7 +21,7 @@ class Menu extends StatelessWidget {
             child: DrawerHeader(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/fondo3.png'), fit: BoxFit.cover)
+                  image: AssetImage('assets/1.jpg'), fit: BoxFit.cover)
               ),
               child: Column(
                 children: [

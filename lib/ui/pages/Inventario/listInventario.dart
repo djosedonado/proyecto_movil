@@ -31,10 +31,16 @@ class ListInventario extends StatelessWidget {
                 base64Decode(controla.listArticlesInventario![index].img);
             return ListTile(
               leading: SizedBox(
-                child: Image.memory(
+                child: InteractiveViewer(
+                  boundaryMargin:
+                      EdgeInsets.all(20.0), // Margen alrededor del contenido
+                  minScale: 0.5, // Escala mínima permitida
+                  maxScale: 4.0, // Escala máxima permitida
+                  child: Image.memory(
                   bytes,
                   width: 100,
                   height: 200,
+                ), // Ruta o URL de la imagen que deseas mostrar
                 ),
               ),
               title: Row(

@@ -26,3 +26,6 @@ class Article {
         valor: double.parse(jsonMap['valor']));
   }
 }
+
+
+
