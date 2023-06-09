@@ -52,9 +52,9 @@ class PeticionesUser {
 
     final response = await http.post(url, body: {
       'id': id,
-      'image': foto,
       'name': name,
       'surname': surname,
+      'image': foto,
     });
 
     print(response.statusCode);

@@ -1,12 +1,34 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
 
-class ListUsers extends StatelessWidget {
+class ListUsers extends StatefulWidget {
   const ListUsers({super.key});
+
+  @override
+  State<ListUsers> createState() => _ListUsersState();
+}
+
+class _ListUsersState extends State<ListUsers> {
+  ImagePicker picker = ImagePicker();
+  var _image;
+  String? base64 = null;
+
+  _galeria() async {
+    XFile? image =
+        await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = (image != null) ? File(image.path) : null;
+      base64 = (_image != null)
+          ? base64Encode(File(image!.path).readAsBytesSync())
+          : null;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +50,10 @@ class ListUsers extends StatelessWidget {
         () => ListView.builder(
           itemCount: controlu.listaUserLogin!.length,
           itemBuilder: (BuildContext context, int index) {
+             print("--->>>>" + controlu.listaUserLogin![index].foto);
             Uint8List bytes =
-                base64Decode(controlu.listaUserLogin![index].foto);
+              base64Decode(controlu.listaUserLogin![index].foto);
+           
             return Dismissible(
               key: Key(controlu.listaUserLogin![index].id.toString()),
               background: Container(

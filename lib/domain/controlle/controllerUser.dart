@@ -31,6 +31,7 @@ class ControllerUser extends GetxController {
     try {
       _listarMensajes.value =
           await PeticionesUser.editarUserPerfil(id, name, surname, foto);
+          print(foto);
     } catch (e) {}
   }
 

@@ -52,9 +52,9 @@ class _EditarPerfilState extends State<EditarPerfil> {
   }
 
   eventoEditarPerfil(
-      String Id, String Name, String surName, String Email) {
+      String id, String firshName, String lithName) {
     controlu
-        .editarUserPerfil(Id, Name, surName, Email)
+        .editarUserPerfil(id, firshName, lithName,base64.toString())
         .then((value) {
       return Get.snackbar('Usuario', controlu.listaMensajes![0].mensaje,
           duration: const Duration(seconds: 4),
@@ -235,8 +235,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                           eventoEditarPerfil(
                               controlu.listaUserLogin![0].id.toString(),
                               name.text,
-                              surname.text,
-                              email.text);
+                              surname.text);
                         }
                       },
                     ),
@@ -256,8 +255,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                           eventoEditarPerfil(
                               controlu.listaUserLogin![0].id.toString(),
                               name.text,
-                              surname.text,
-                              email.text);
+                              surname.text);
                         }
                       },
                     ),
@@ -278,8 +276,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                           eventoEditarPerfil(
                               controlu.listaUserLogin![0].id.toString(),
                               name.text,
-                              surname.text,
-                              email.text);
+                              surname.text);
                         }
                       },
                     ),
@@ -296,8 +293,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                               eventoEditarPerfil(
                                   controlu.listaUserLogin![0].id.toString(),
                                   name.text,
-                                  surname.text,
-                                  email.text);
+                                  surname.text);
                             }
                           },
                           child: Icon(Icons.account_circle))),

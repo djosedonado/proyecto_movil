@@ -10,6 +10,7 @@ class ListInventario extends StatelessWidget {
   Widget build(BuildContext context) {
     ControllerArticle controla = Get.find();
     controla.listArticle();
+    controla.listarArticle.refresh();
     return Scaffold(
       appBar: AppBar(
         title: Text("Inventario"),
