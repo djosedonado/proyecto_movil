@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:proyecto_movil/domain/controlle/controllerUser.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_movil/ui/auth/textFormFile.dart';
@@ -9,11 +10,39 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _isLoading = false;
+  void simulateLogin() {
+    setState(() {
+      _isLoading = true;
+    });
+
+    // Simulando inicio de sesión
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initialize();
+  }
+
+  void initialize() async {
+    /// here we will add a wait second to move on next screen
+    await Future.delayed(Duration(seconds: 2));
+    FlutterNativeSplash.remove();
+  }
+
   final _keyFrom = GlobalKey<FormState>();
   ControllerUser controluser = Get.find();
   opreracionLogin(String e, String p) {
     print(e + " " + p);
     controluser.validarUser(e, p).then((value) {
+      simulateLogin();
       if (controluser.listaUserLogin!.isEmpty) {
         return Get.snackbar('Usuarios', 'Usuario no Encontrado',
             duration: const Duration(seconds: 3),
@@ -48,15 +77,24 @@ class _LoginScreenState extends State<LoginScreen> {
       children: [
         //backgroundFondo(),
         Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/fondo3.png'), fit: BoxFit.cover)),
-          padding: EdgeInsets.all(16.0),
-          child: Form(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/1.jpg'), fit: BoxFit.cover)),
+            padding: EdgeInsets.all(16.0),
+            child: ListView(itemExtent: MediaQuery.of(context).size.height, children: [Form(
             key: _keyFrom,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                    width: 400,
+                    height: 400,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/logo.png'),
+                              fit: BoxFit.cover)),
+                    )),
                 TextFormFile_Input(
                   texto: "Email",
                   controller: email,
@@ -105,10 +143,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   child: Text('Login'),
                 ),
+                
+                SizedBox(height: 20.0),
+                _isLoading ? CircularProgressIndicator():SizedBox(),
               ],
             ),
           ),
-        ),
+          ])),
       ],
     ));
   }

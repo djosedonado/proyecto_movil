@@ -52,9 +52,9 @@ class _EditarPerfilState extends State<EditarPerfil> {
   }
 
   eventoEditarPerfil(
-      String Id, String Name, String surName, String Email, String Password) {
+      String Id, String Name, String surName, String Email) {
     controlu
-        .editarUser(Id, Name, surName, Email, Password, '0', '1')
+        .editarUserPerfil(Id, Name, surName, Email)
         .then((value) {
       return Get.snackbar('Usuario', controlu.listaMensajes![0].mensaje,
           duration: const Duration(seconds: 4),
@@ -236,8 +236,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                               controlu.listaUserLogin![0].id.toString(),
                               name.text,
                               surname.text,
-                              email.text,
-                              password.text);
+                              email.text);
                         }
                       },
                     ),
@@ -258,8 +257,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                               controlu.listaUserLogin![0].id.toString(),
                               name.text,
                               surname.text,
-                              email.text,
-                              password.text);
+                              email.text);
                         }
                       },
                     ),
@@ -281,8 +279,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                               controlu.listaUserLogin![0].id.toString(),
                               name.text,
                               surname.text,
-                              email.text,
-                              password.text);
+                              email.text);
                         }
                       },
                     ),
@@ -300,8 +297,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                                   controlu.listaUserLogin![0].id.toString(),
                                   name.text,
                                   surname.text,
-                                  email.text,
-                                  password.text);
+                                  email.text);
                             }
                           },
                           child: Icon(Icons.account_circle))),
