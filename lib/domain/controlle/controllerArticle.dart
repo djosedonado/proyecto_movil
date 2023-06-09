@@ -18,7 +18,7 @@ class ControllerArticle extends GetxController {
         name, codigo, unidad, idUser, valor, image);
   }
 
-  Future<void> eliminarUser(String id) async {
+  Future<void> eliminarArticulo(String id) async {
     try {
       _listarMensajes.value = await PeticionesArticles.eliminarArticulo(id);
     } catch (e) {}

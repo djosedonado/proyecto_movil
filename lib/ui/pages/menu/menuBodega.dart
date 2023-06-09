@@ -25,8 +25,8 @@ class _MenuBodegaState extends State<MenuBodega> {
   Widget build(BuildContext context) {
     
     List<SalesData> data = [
-      SalesData('Total Articulos', 12),
-      SalesData('Valor',12),
+      SalesData('Total Articulos', 100),
+      SalesData('Valor',1500),
       // Agrega más datos según sea necesario
     ];
 
